@@ -70,7 +70,7 @@ const CertificationsSection = () => {
               >
                 <div className="mb-4">
                   <h3 className="text-lg font-bold text-white mb-2">{cert.title}</h3>
-                  <p className="text-green-400 font-medium mb-2">{cert.issuer}</p>
+                  <p className="text-green-400 font-medium mb-2" style={{ marginBottom: '3px' }}>{cert.issuer}</p>
                   
                   <div className="flex items-center gap-1 text-xs text-slate-400" style={{ marginBottom: '6px' }}>
                     <Calendar size={14} />
@@ -78,7 +78,7 @@ const CertificationsSection = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                <p className="text-slate-300 text-sm leading-relaxed mb-4" style={{ marginBottom: '14px' }}>
                   {cert.description}
                 </p>
 

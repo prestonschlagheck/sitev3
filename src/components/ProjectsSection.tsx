@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    title: "Personal Portfolio",
+    description: "A design-focused, user-friendly portfolio built with numerous languages. This project showcases my progress and interests in a visually engaging and accessible way. If you are interested in having your own custom portfolio, please reach out.",
+    technologies: ["Next.js", "React", "TypeScript", "Vercel"],
+    image: "/portfolio.jpg",
+    timeline: "2 months",
+    teamSize: "Solo project",
+    status: "Completed"
+  },
+  {
     title: "TIANS Website",
     description: "Designed and developed the website for Trinity Institute for Applied Neuroscience and Spirituality (TIANS). Created a modern, accessible interface focusing on user experience and content presentation.",
     technologies: ["HTML", "Wix"],
