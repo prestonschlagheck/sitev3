@@ -21,9 +21,9 @@ const Footer = () => {
             alignItems: 'center'
           }}
         >
-          {/* Let's Connect Header - Smaller */}
+          {/* Let&apos;s Connect Header - Smaller */}
           <h3 className="text-lg font-semibold text-white">
-            Let's Connect
+            Let&apos;s Connect
           </h3>
 
           {/* Spacer */}

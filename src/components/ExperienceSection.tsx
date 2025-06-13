@@ -3,7 +3,25 @@
 import { motion } from 'framer-motion';
 import { Calendar, MapPin } from 'lucide-react';
 
-const experiences = [
+interface Experience {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string;
+  technologies: string[];
+  current: boolean;
+  type?: 'previous' | 'internship';
+}
+
+interface TagConfig {
+  text: string;
+  textColor: string;
+  bgColor: string;
+  borderColor: string;
+}
+
+const experiences: Experience[] = [
   {
     title: "Bar Back",
     company: "BAR New Haven",
@@ -82,7 +100,7 @@ const experiences = [
 ];
 
 const ExperienceSection = () => {
-  const getTagConfig = (exp) => {
+  const getTagConfig = (exp: Experience): TagConfig | null => {
     if (exp.current) {
       return {
         text: "Current",

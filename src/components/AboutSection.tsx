@@ -75,7 +75,7 @@ const AboutSection = () => {
             className="text-center"
           >
             <h1 className="text-[1.48rem] md:text-4xl lg:text-5xl font-bold">
-              <span className="gradient-text">Hello, I'm Preston Schlagheck</span>
+              <span className="gradient-text">Hello, I&apos;m Preston Schlagheck</span>
             </h1>
           </motion.div>
 
@@ -104,7 +104,7 @@ const AboutSection = () => {
                  width: '100%'
                }}
              >
-              I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I'm particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
+              I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
             </p>
             <div></div>
           </motion.div>
