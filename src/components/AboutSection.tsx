@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 lg:py-14 min-h-screen flex items-center justify-center">
+    <section id="about" className={`${isDesktop ? 'min-h-screen flex items-center justify-center' : 'py-20 pt-64'}`}>
       <div className="w-full max-w-6xl mx-auto px-6">
         
         {/* Using CSS Grid with explicit gaps for guaranteed spacing */}
@@ -32,61 +32,68 @@ const AboutSection = () => {
           className="w-full"
           style={{
             display: 'grid',
-            gridTemplateRows: '20px auto 10px auto 10px auto 20px auto',
-            gap: '8px',
+            gridTemplateRows: isDesktop ? 'auto auto auto auto auto' : 'auto auto auto auto auto auto auto auto',
+            gap: isDesktop ? '32px' : '4px',
             justifyItems: 'center',
             alignItems: 'center'
           }}
         >
           
-          {/* Mobile Top Spacer */}
-          <div className="block md:hidden" style={{ height: '20px' }}></div>
+          {/* Mobile Top Spacer - Even more increased */}
+          {!isDesktop && <div style={{ height: '100px' }}></div>}
           
           {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             viewport={{ once: true }}
             className="text-center"
-            style={{ marginTop: '20px' }}
           >
-            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-blue-500 shadow-2xl mx-auto">
-              <Image
-                src="/headshot.jpeg"
-                alt="Preston Schlagheck"
-                width={128}
-                height={128}
-                className="w-full h-full object-cover"
-                priority
-              />
+            <div 
+              className="w-32 h-32 md:w-36 md:h-36 rounded-full shadow-2xl mx-auto flex items-center justify-center"
+              style={{ 
+                background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.9) 0%, rgba(75, 85, 99, 0.7) 35%, rgba(30, 58, 138, 0.8) 70%, rgba(55, 65, 81, 0.6) 100%)'
+              }}
+            >
+              <div className="w-[122px] h-[122px] md:w-[138px] md:h-[138px] rounded-full overflow-hidden">
+                <Image
+                  src="/profile-new.png"
+                  alt="Preston Schlagheck"
+                  width={147}
+                  height={147}
+                  className="w-full h-full object-cover"
+                  style={{ transform: 'scale(1.32)' }}
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
 
-          {/* Spacer 1 - Responsive: 10px mobile, 90px desktop */}
-          <div style={{ height: isDesktop ? '90px' : '10px' }}></div>
+          {/* Spacer 1 - Mobile only - Decreased */}
+          {!isDesktop && <div style={{ height: '16px' }}></div>}
 
           {/* Main Heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
             viewport={{ once: true }}
             className="text-center"
           >
-            <h1 className="text-[1.48rem] md:text-4xl lg:text-5xl font-bold">
-              <span className="gradient-text">Hello, I&apos;m Preston Schlagheck</span>
+            <h1 className="text-[1.48rem] md:text-4xl lg:text-5xl font-bold text-blue-50">
+              Hello, I&apos;m Preston Schlagheck
             </h1>
           </motion.div>
 
-          {/* Spacer 2 - Responsive: 10px mobile, 72px desktop */}
-          <div style={{ height: isDesktop ? '72px' : '10px' }}></div>
+          {/* Spacer 2 - Mobile only - Decreased */}
+          {!isDesktop && <div style={{ height: '12px' }}></div>}
 
           {/* Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-center w-full"
             style={{
@@ -109,28 +116,34 @@ const AboutSection = () => {
             <div></div>
           </motion.div>
 
-          {/* Spacer 3 - Responsive: 20px mobile, 64px desktop */}
-          <div style={{ height: isDesktop ? '64px' : '20px' }}></div>
+          {/* Spacer 3 - Mobile only - Decreased */}
+          {!isDesktop && <div style={{ height: '12px' }}></div>}
 
           {/* Contact Info */}
           <motion.div 
             className="flex flex-wrap justify-center gap-3 md:gap-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
             viewport={{ once: true }}
             style={{
               fontSize: isDesktop ? '0.875rem' : '0.788rem'
             }}
           >
-            <div className="flex items-center gap-2 text-slate-400">
+            <a 
+              href="mailto:prestonschlagheck@gmail.com"
+              className="flex items-center gap-2 text-slate-400 hover:text-slate-300 transition-colors"
+            >
               <Mail size={isDesktop ? 16 : 12.6} />
               <span>prestonschlagheck@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2 text-slate-400">
+            </a>
+            <a 
+              href="tel:+19593330277"
+              className="flex items-center gap-2 text-slate-400 hover:text-slate-300 transition-colors"
+            >
               <Phone size={isDesktop ? 16 : 12.6} />
               <span>(959) 333-0277</span>
-            </div>
+            </a>
             <div className="flex items-center gap-2 text-slate-400">
               <MapPin size={isDesktop ? 16 : 12.6} />
               <span>Guilford, CT & Columbia, SC</span>
@@ -145,6 +158,9 @@ const AboutSection = () => {
               <span>Download Resume</span>
             </a>
           </motion.div>
+
+          {/* Mobile Bottom Spacer - Increased to prevent Experience section showing */}
+          {!isDesktop && <div style={{ height: '80px' }}></div>}
 
         </div>
       </div>

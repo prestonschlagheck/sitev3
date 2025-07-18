@@ -11,7 +11,7 @@ const Navigation = () => {
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'projects', label: 'Projects' },
-    { id: 'interests', label: 'Interests' },
+    { id: 'interests', label: 'Contact' },
   ];
 
   useEffect(() => {
@@ -79,8 +79,8 @@ const Navigation = () => {
     >
       <div className="relative">
         {/* Main navigation background with soft fade edges */}
-        <div className="glass-nav rounded-full shadow-2xl border border-blue-500/15 backdrop-blur-xl bg-slate-900/40" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '4px', paddingBottom: '4px' }}>
-          <div className="flex items-center relative gap-4 md:gap-10" style={{ paddingLeft: '12px', paddingRight: '12px', paddingTop: '4px', paddingBottom: '4px' }}>
+        <div className="glass-nav rounded-full shadow-2xl border border-slate-800/40 backdrop-blur-xl" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '4px', paddingBottom: '4px', backgroundColor: 'rgba(15, 23, 42, 0.95)' }}>
+          <div className="flex items-center relative gap-6 md:gap-10" style={{ paddingLeft: '12px', paddingRight: '12px', paddingTop: '4px', paddingBottom: '4px' }}>
             {sections.map((section) => (
               <button
                 key={section.id}
@@ -94,8 +94,9 @@ const Navigation = () => {
                 {activeSection === section.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500/50 to-purple-500/50 rounded-full border border-blue-400/60 shadow-lg backdrop-blur-sm"
+                    className="absolute inset-0 rounded-full border border-blue-900/60 shadow-lg backdrop-blur-sm"
                     style={{ 
+                      background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
                       left: '-8px', 
                       right: '-8px',
                       top: '-2px',

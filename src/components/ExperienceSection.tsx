@@ -45,7 +45,7 @@ const experiences: Experience[] = [
     company: "Madison Country Club",
     location: "Madison, Connecticut",
     period: "May 2025 - Present",
-    description: "Managing daily transactions, scheduling tee times, and serving as primary contact for 500+ club members.",
+    description: "Managed daily transactions, scheduled tee times, and served as primary contact for 500+ club members.",
     technologies: [],
     current: true
   },
@@ -101,26 +101,31 @@ const experiences: Experience[] = [
 
 const ExperienceSection = () => {
   const getTagConfig = (exp: Experience): TagConfig | null => {
+    // Remove tags for specific positions
+    if (exp.title === "Member Services Associate" || exp.title === "Outside Operations Assistant") {
+      return null;
+    }
+    
     if (exp.current) {
       return {
         text: "Current",
-        textColor: "text-green-400",
-        bgColor: "bg-green-500/20",
-        borderColor: "border-green-500/30"
+        textColor: "text-emerald-300",
+        bgColor: "bg-blue-500/20",
+        borderColor: "border-blue-500/30"
       };
     } else if (exp.type === "previous") {
       return {
         text: "Previous",
-        textColor: "text-purple-400",
+        textColor: "text-purple-300",
         bgColor: "bg-purple-500/20",
         borderColor: "border-purple-500/30"
       };
     } else if (exp.type === "internship") {
       return {
         text: "Internship",
-        textColor: "text-yellow-400",
-        bgColor: "bg-yellow-500/20",
-        borderColor: "border-yellow-500/30"
+        textColor: "text-pink-300",
+        bgColor: "bg-indigo-500/20",
+        borderColor: "border-indigo-500/30"
       };
     }
     return null;
@@ -152,8 +157,8 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="gradient-text">Experience</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
+              Experience
             </h2>
           </motion.div>
 
@@ -202,8 +207,9 @@ const ExperienceSection = () => {
                                     }}
                                   >
                                     <motion.div
-                                      className={`absolute inset-0 ${tagConfig.bgColor} rounded-full border ${tagConfig.borderColor}`}
+                                      className={`absolute inset-0 rounded-full border border-blue-900/60`}
                                       style={{ 
+                                        background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
                                         left: '-8px', 
                                         right: '-8px',
                                         top: '-2px',
@@ -229,8 +235,9 @@ const ExperienceSection = () => {
                                   }}
                                 >
                                   <motion.div
-                                    className={`absolute inset-0 ${tagConfig.bgColor} rounded-full border ${tagConfig.borderColor}`}
+                                    className={`absolute inset-0 rounded-full border border-blue-900/60`}
                                     style={{ 
+                                      background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
                                       left: '-8px', 
                                       right: '-8px',
                                       top: '-2px',
@@ -256,8 +263,9 @@ const ExperienceSection = () => {
                                 }}
                               >
                                 <motion.div
-                                  className={`absolute inset-0 ${tagConfig.bgColor} rounded-full border ${tagConfig.borderColor}`}
+                                  className={`absolute inset-0 rounded-full border border-blue-900/60`}
                                   style={{ 
+                                    background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
                                     left: '-8px', 
                                     right: '-8px',
                                     top: '-2px',
@@ -271,9 +279,9 @@ const ExperienceSection = () => {
                         </div>
                       )}
                     </div>
-                    <p className="text-blue-400 font-medium" style={{ marginBottom: '0px' }}>{exp.company}</p>
+                    <p className="font-medium" style={{ marginBottom: '4px', marginTop: '-7px', color: 'rgb(96, 165, 250)' }}>{exp.company}</p>
                     
-                    <div className="flex flex-wrap gap-6 text-xs text-slate-400 mb-5">
+                    <div className="flex flex-wrap gap-6 text-xs text-slate-400 mb-5" style={{ marginTop: '8px' }}>
                       <div className="flex items-center gap-2">
                         <Calendar size={14} />
                         <span>{exp.period}</span>

@@ -47,8 +47,8 @@ const CertificationsSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold">
-              <span className="gradient-text">Certifications</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
+              Certifications
             </h2>
           </motion.div>
 
@@ -69,8 +69,8 @@ const CertificationsSection = () => {
                 style={{ padding: '10px' }}
               >
                 <div className="mb-4">
-                  <h3 className="text-lg font-bold text-white mb-2">{cert.title}</h3>
-                  <p className="text-green-400 font-medium mb-2" style={{ marginBottom: '3px' }}>{cert.issuer}</p>
+                  <h3 className="text-lg font-bold text-white" style={{ marginBottom: '1px' }}>{cert.title}</h3>
+                  <p className="font-medium" style={{ marginBottom: '4px', color: 'rgb(96, 165, 250)' }}>{cert.issuer}</p>
                   
                   <div className="flex items-center gap-1 text-xs text-slate-400" style={{ marginBottom: '6px' }}>
                     <Calendar size={14} />
@@ -86,11 +86,12 @@ const CertificationsSection = () => {
                   {cert.technologies.map((tech, techIndex) => (
                     <motion.span
                       key={techIndex}
-                      className="relative px-1 py-2.5 text-xs font-medium text-green-400 rounded-full whitespace-nowrap"
+                      className="relative px-1 py-2.5 text-xs font-medium text-yellow-300 rounded-full whitespace-nowrap"
                     >
                       <motion.div
-                        className="absolute inset-0 bg-green-500/10 rounded-lg border border-green-500/20"
+                        className="absolute inset-0 rounded-lg border border-blue-900/60"
                         style={{ 
+                          background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
                           left: '-8px', 
                           right: '-8px',
                           top: '-2px',
