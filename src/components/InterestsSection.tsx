@@ -31,7 +31,7 @@ const InterestsSection = () => {
             className="text-center"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
-              Let's Connect
+              Let&apos;s Connect
             </h2>
           </motion.div>
 
