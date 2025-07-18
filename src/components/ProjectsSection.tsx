@@ -5,13 +5,13 @@ import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: "Personal Portfolio",
-    description: "A design-focused, user-friendly portfolio built with numerous languages. This project showcases my progress and interests in a visually engaging and accessible way. If you are interested in having your own custom portfolio, please reach out.",
+    title: "Customizable Personal Portfolio",
+    description: "A design-focused, user-friendly portfolio built with numerous languages. This project showcases a user's progress and interest in a visually engaging and accessible way. If you are interested in having your own custom portfolio, please reach out.",
     technologies: ["Next.js", "React", "TypeScript"],
     timeline: "2 months",
     teamSize: "Solo project",
     status: "Completed",
-    link: "https://prestonsch.com"
+    link: "https://portfolio-template-mu-ten.vercel.app/"
   },
   {
     title: "TIANS Website",
