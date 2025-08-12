@@ -5,6 +5,15 @@ import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
+    title: "Riggy's Truck Parking Website",
+    description: "Modernized user interface and payment processing system for a truck parking company, enabling streamlined booking experiences and enhanced online presence. Implemented optimized payment flows to reduce transaction steps and improve overall user satisfaction.",
+    technologies: ["HTML", "PHP", "WordPress"],
+    timeline: "3 months",
+    teamSize: "Solo project",
+    status: "Completed",
+    link: "https://riggys.com/"
+  },
+  {
     title: "Customizable Personal Portfolio",
     description: "A design-focused, user-friendly portfolio built with numerous languages. This project showcases a user's progress and interest in a visually engaging and accessible way. If you are interested in having your own custom portfolio, please reach out.",
     technologies: ["Next.js", "React", "TypeScript"],
@@ -38,6 +47,14 @@ const projects = [
     timeline: "5 months",
     teamSize: "Solo project",
     status: "In Progress"
+  },
+  {
+    title: "Bread",
+    description: "A comprehensive financial flow chart application that enables users to upload and analyze spending, income, and financial data through interactive inflows and outflows visualizations. Designed to provide clear insights into spending patterns and support informed financial decision-making.",
+    technologies: ["React", "Node.js", "Chart.js"],
+    timeline: "4 months",
+    teamSize: "Solo project",
+    status: "In Progress"
   }
 ];
 
@@ -68,7 +85,7 @@ const ProjectsSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white">
               Projects
             </h2>
           </motion.div>
@@ -95,9 +112,9 @@ const ProjectsSection = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute top-3 right-3 w-7 h-7 bg-slate-700/60 hover:bg-slate-600/80 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 group"
+                    className="absolute top-3 right-3 w-7 h-7 bg-[#1a1a1a]/60 hover:bg-[#1a1a1a]/80 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 group"
                   >
-                    <ExternalLink size={14} className="text-slate-300 group-hover:text-white" />
+                    <ExternalLink size={14} className="text-[#a1a1aa] group-hover:text-white" />
                   </a>
                 )}
                 
@@ -108,14 +125,14 @@ const ProjectsSection = () => {
                     <motion.span
                       className={`relative px-1 py-2.5 text-xs font-medium rounded-full whitespace-nowrap ${
                         project.status === "Completed" 
-                          ? "text-blue-300" 
-                          : "text-purple-300"
+                          ? "text-[#3b82f6]" 
+                          : "text-[#a855f7]"
                       }`}
                     >
                       <motion.div
-                        className={`absolute inset-0 rounded-lg border border-blue-900/60`}
+                        className={`absolute inset-0 rounded-lg border border-[#27272a]`}
                         style={{ 
-                          background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
+                          background: 'radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.2) 0%, rgba(75, 85, 99, 0.1) 35%, rgba(59, 130, 246, 0.15) 70%, rgba(55, 65, 81, 0.1) 100%)',
                           left: '-8px', 
                           right: '-8px',
                           top: '-2px',
@@ -128,12 +145,12 @@ const ProjectsSection = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <motion.span
                         key={techIndex}
-                        className="relative px-1 py-2.5 text-xs font-medium text-green-300 rounded-full whitespace-nowrap"
+                        className="relative px-1 py-2.5 text-xs font-medium text-[#22c55e] rounded-full whitespace-nowrap"
                       >
                         <motion.div
-                          className="absolute inset-0 rounded-lg border border-blue-900/60"
+                          className="absolute inset-0 rounded-lg border border-[#27272a]"
                           style={{ 
-                            background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
+                            background: 'radial-gradient(ellipse at 30% 20%, rgba(34, 197, 94, 0.2) 0%, rgba(75, 85, 99, 0.1) 35%, rgba(34, 197, 94, 0.15) 70%, rgba(55, 65, 81, 0.1) 100%)',
                             left: '-8px', 
                             right: '-8px',
                             top: '-2px',
@@ -146,7 +163,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <p className="text-[#a1a1aa] text-sm leading-relaxed">
                   {project.description}
                 </p>
               </motion.div>
@@ -159,4 +176,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection; 
+export default ProjectsSection;

@@ -23,6 +23,15 @@ interface TagConfig {
 
 const experiences: Experience[] = [
   {
+    title: "Web Developer",
+    company: "Direct Journeyline Holdings, LLC",
+    location: "Knoxville, Tennessee",
+    period: "Jul 2025 - Present",
+    description: "Maintain booking-integrated websites, streamline backend workflows to reduce manual reporting, and build mobile-responsive layouts that drive traffic to key revenue pages.",
+    technologies: [],
+    current: true
+  },
+  {
     title: "Bar Back",
     company: "BAR New Haven",
     location: "New Haven, Connecticut",
@@ -31,15 +40,7 @@ const experiences: Experience[] = [
     technologies: [],
     current: true
   },
-  {
-    title: "Coca-Cola Campus Ambassador",
-    company: "The Coca-Cola Company",
-    location: "Columbia, South Carolina",
-    period: "Jun 2025 - Present",
-    description: "Leading on-campus sampling, marketing, and social media efforts related to new product launches.",
-    technologies: [],
-    current: true
-  },
+  
   {
     title: "Member Services Associate",
     company: "Madison Country Club",

@@ -8,6 +8,7 @@ const Navigation = () => {
   
   const sections = [
     { id: 'about', label: 'About' },
+    { id: 'software', label: 'Tools' },
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'projects', label: 'Projects' },
@@ -111,9 +112,7 @@ const Navigation = () => {
           </div>
         </div>
         
-        {/* Soft fade-out glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-2xl -z-10 scale-110" />
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-slate-900/60 to-slate-900/60 blur-xl -z-20 scale-125" />
+
       </div>
     </motion.nav>
   );

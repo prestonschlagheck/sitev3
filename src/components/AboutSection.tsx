@@ -98,7 +98,7 @@ const AboutSection = () => {
             className="text-center w-full"
             style={{
               display: 'grid',
-              gridTemplateColumns: isDesktop ? '1fr minmax(0, 768px) 1fr' : '24px 1fr 24px',
+              gridTemplateColumns: isDesktop ? '1fr minmax(0, 850px) 1fr' : '24px 1fr 24px',
               justifyItems: 'center'
             }}
           >
@@ -111,7 +111,7 @@ const AboutSection = () => {
                  width: '100%'
                }}
              >
-              I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
+              I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I have extensive experience in web development for companies, helping them achieve their financial and digital presence objectives. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
             </p>
             <div></div>
           </motion.div>
