@@ -347,7 +347,7 @@ const ExperienceSection = () => {
           <div style={{ height: '12px' }}></div>
 
           {/* Content */}
-          <div className="grid gap-6 md:grid-cols-2 w-full">
+          <div className="grid gap-6 md:grid-cols-2 w-full" style={{ marginTop: '-4px' }}>
             {filteredExperiences.map((exp, index) => (
               <motion.div
                 key={index}

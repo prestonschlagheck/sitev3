@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, FileText } from 'lucide-react';
+import { Mail, Phone, MapPin, Download } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -157,7 +157,7 @@ const AboutSection = () => {
               <span className="text-sm text-[#82868e]">Guilford, CT & Columbia, SC</span>
             </div>
             <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
-              <FileText size={16} className="text-[#68cd58]" />
+              <Download size={16} className="text-[#68cd58]" />
               <span className="text-sm text-[#82868e]">Download Resume</span>
             </div>
           </motion.div>
