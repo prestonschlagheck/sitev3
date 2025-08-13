@@ -2,23 +2,28 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Wrench } from 'lucide-react';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('about');
+  const [isManualClick, setIsManualClick] = useState(false);
   
   const sections = [
     { id: 'about', label: 'About' },
-    { id: 'software', label: 'Tools' },
+    { id: 'software', label: 'Tools', icon: true },
     { id: 'experience', label: 'Experience' },
-    { id: 'certifications', label: 'Certifications' },
     { id: 'projects', label: 'Projects' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'interests', label: 'Contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'certifications', 'projects', 'interests'];
-      const scrollPosition = window.scrollY + 150;
+      // Don't override manual clicks for 1 second
+      if (isManualClick) return;
+      
+      const sections = ['about', 'software', 'experience', 'projects', 'certifications', 'interests'];
+      const scrollPosition = window.scrollY + (window.innerHeight / 2); // Use center of viewport
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       
@@ -49,6 +54,7 @@ const Navigation = () => {
           const offsetHeight = element.offsetHeight;
           
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            console.log('Setting active section to:', section, 'at scroll position:', scrollPosition, 'element offset:', offsetTop);
             setActiveSection(section);
             break;
           }
@@ -58,9 +64,18 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isManualClick]);
 
   const scrollToSection = (sectionId: string) => {
+    // Set active section immediately when clicking
+    setActiveSection(sectionId);
+    
+    // Set manual click flag to prevent scroll detection from overriding
+    setIsManualClick(true);
+    
+    // Clear the flag after 1 second
+    setTimeout(() => setIsManualClick(false), 1000);
+    
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 100;
@@ -80,7 +95,7 @@ const Navigation = () => {
     >
       <div className="relative">
         {/* Main navigation background with soft fade edges */}
-        <div className="glass-nav rounded-full shadow-2xl border border-slate-800/40 backdrop-blur-xl" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '4px', paddingBottom: '4px', backgroundColor: 'rgba(15, 23, 42, 0.95)' }}>
+        <div className="glass-nav rounded-full shadow-2xl border border-[#1a1c1d]/40 backdrop-blur-xl" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '4px', paddingBottom: '4px', backgroundColor: 'rgba(15, 16, 17, 0.95)' }}>
           <div className="flex items-center relative gap-6 md:gap-10" style={{ paddingLeft: '12px', paddingRight: '12px', paddingTop: '4px', paddingBottom: '4px' }}>
             {sections.map((section) => (
               <button
@@ -95,9 +110,9 @@ const Navigation = () => {
                 {activeSection === section.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-full border border-blue-900/60 shadow-lg backdrop-blur-sm"
+                    className="absolute inset-0 rounded-full border border-[#1a1c1d]/60 shadow-lg backdrop-blur-sm"
                     style={{ 
-                      background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
+                      background: 'radial-gradient(ellipse at 30% 20%, rgba(26, 28, 29, 0.7) 0%, rgba(15, 16, 17, 0.5) 35%, rgba(26, 28, 29, 0.6) 70%, rgba(15, 16, 17, 0.4) 100%)',
                       left: '-8px', 
                       right: '-8px',
                       top: '-2px',
@@ -106,7 +121,13 @@ const Navigation = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-                <span className="relative z-20 drop-shadow-lg px-1.5 md:px-4">{section.label}</span>
+                <span className="relative z-20 drop-shadow-lg px-1.5 md:px-4">
+                  {section.icon ? (
+                    <Wrench size={16} className="mx-auto" />
+                  ) : (
+                    section.label
+                  )}
+                </span>
               </button>
             ))}
           </div>

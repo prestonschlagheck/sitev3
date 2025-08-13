@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Play, User, Code, Target } from 'lucide-react';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -78,17 +79,15 @@ const ProjectsSection = () => {
           <div style={{ height: '12px' }}></div>
 
           {/* Header */}
-          <motion.div
+          <motion.h2 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-4xl lg:text-5xl font-bold text-center mb-12 text-white"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-white">
-              Projects
-            </h2>
-          </motion.div>
+            Projects
+          </motion.h2>
 
           {/* Spacer */}
           <div style={{ height: '12px' }}></div>
@@ -104,7 +103,7 @@ const ProjectsSection = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
                 className="glass rounded-2xl relative"
-                style={{ padding: '10px' }}
+                style={{ padding: '20px' }}
               >
                 {/* External Link Arrow for Completed Projects */}
                 {project.status === "Completed" && project.link && (
@@ -118,54 +117,72 @@ const ProjectsSection = () => {
                   </a>
                 )}
                 
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold text-white" style={{ marginBottom: '6px' }}>{project.title}</h3>
-                  
-                  <div className="flex flex-wrap gap-6 mb-3" style={{ marginLeft: '6px', marginBottom: '6px' }}>
-                    <motion.span
-                      className={`relative px-1 py-2.5 text-xs font-medium rounded-full whitespace-nowrap ${
-                        project.status === "Completed" 
-                          ? "text-[#3b82f6]" 
-                          : "text-[#a855f7]"
-                      }`}
-                    >
-                      <motion.div
-                        className={`absolute inset-0 rounded-lg border border-[#27272a]`}
-                        style={{ 
-                          background: 'radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.2) 0%, rgba(75, 85, 99, 0.1) 35%, rgba(59, 130, 246, 0.15) 70%, rgba(55, 65, 81, 0.1) 100%)',
-                          left: '-8px', 
-                          right: '-8px',
-                          top: '-2px',
-                          bottom: '-2px'
-                        }}
+                {/* Project Title */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h3 className="text-2xl font-bold text-white" style={{ marginBottom: '9px' }}>{project.title}</h3>
+                </div>
+
+                {/* Properties Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Properties</h4>
+                  <div className="flex items-center gap-4">
+                    {project.status === "Completed" ? (
+                      <div className="flex items-center gap-2 bg-transparent border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#68cd58" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        <span className="text-sm text-[#82868e] font-medium">Completed</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 bg-transparent border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                        <Play size={14} className="text-[#fbbf24]" />
+                        <span className="text-sm text-[#82868e] font-medium">In Progress</span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src="/profile-new.png"
+                        alt="Profile"
+                        width={24}
+                        height={24}
+                        className="rounded-full grayscale"
                       />
-                      <span className="relative z-20 px-4">{project.status}</span>
-                    </motion.span>
-                    
+                      <span className="text-sm text-[#82868e]">1 Developer</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resources Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Resources</h4>
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <motion.span
+                      <div
                         key={techIndex}
-                        className="relative px-1 py-2.5 text-xs font-medium text-[#22c55e] rounded-full whitespace-nowrap"
+                        className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md"
+                        style={{ padding: '4px 8px' }}
                       >
-                        <motion.div
-                          className="absolute inset-0 rounded-lg border border-[#27272a]"
-                          style={{ 
-                            background: 'radial-gradient(ellipse at 30% 20%, rgba(34, 197, 94, 0.2) 0%, rgba(75, 85, 99, 0.1) 35%, rgba(34, 197, 94, 0.15) 70%, rgba(55, 65, 81, 0.1) 100%)',
-                            left: '-8px', 
-                            right: '-8px',
-                            top: '-2px',
-                            bottom: '-2px'
-                          }}
-                        />
-                        <span className="relative z-20 px-4">{tech}</span>
-                      </motion.span>
+                        <Code size={14} className="text-[#68cd58]" />
+                        <span className="text-sm text-[#82868e]">{tech}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
 
-                <p className="text-[#a1a1aa] text-sm leading-relaxed">
-                  {project.description}
-                </p>
+                {/* Objectives Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Objectives</h4>
+                  <div className="space-y-4">
+                    {project.description.split('. ').slice(0, 3).map((point, pointIndex) => (
+                      <div key={pointIndex} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-[#68cd58] rounded-full flex-shrink-0" style={{ marginTop: '9px' }}></div>
+                        <p className="text-sm text-[#82868e] leading-relaxed">
+                          {point.endsWith('.') ? point : point + '.'}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

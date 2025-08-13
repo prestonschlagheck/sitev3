@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, Building2, User } from 'lucide-react';
 
 interface Experience {
   title: string;
@@ -27,7 +27,7 @@ const experiences: Experience[] = [
     company: "Direct Journeyline Holdings, LLC",
     location: "Knoxville, Tennessee",
     period: "Jul 2025 - Present",
-    description: "Maintain booking-integrated websites, streamline backend workflows to reduce manual reporting, and build mobile-responsive layouts that drive traffic to key revenue pages.",
+    description: "Maintain booking-integrated websites and streamline backend workflows to reduce manual reporting.",
     technologies: [],
     current: true
   },
@@ -40,7 +40,6 @@ const experiences: Experience[] = [
     technologies: [],
     current: true
   },
-  
   {
     title: "Member Services Associate",
     company: "Madison Country Club",
@@ -103,37 +102,41 @@ const experiences: Experience[] = [
 const ExperienceSection = () => {
   const getTagConfig = (exp: Experience): TagConfig | null => {
     // Remove tags for specific positions
-    if (exp.title === "Member Services Associate" || exp.title === "Outside Operations Assistant") {
+    if (exp.title === "Member Services Associate" || exp.title === "Outside Operations Assistant" || exp.title === "Bar Back") {
       return null;
     }
     
     if (exp.current) {
       return {
         text: "Current",
-        textColor: "text-emerald-300",
-        bgColor: "bg-blue-500/20",
-        borderColor: "border-blue-500/30"
+        textColor: "text-[#68cd58]",
+        bgColor: "bg-[#0f1011]",
+        borderColor: "border-[#1a1c1d]"
       };
     } else if (exp.type === "previous") {
       return {
         text: "Previous",
-        textColor: "text-purple-300",
-        bgColor: "bg-purple-500/20",
-        borderColor: "border-purple-500/30"
+        textColor: "text-[#68cd58]",
+        bgColor: "bg-[#0f1011]",
+        borderColor: "border-[#1a1c1d]"
       };
     } else if (exp.type === "internship") {
       return {
         text: "Internship",
-        textColor: "text-pink-300",
-        bgColor: "bg-indigo-500/20",
-        borderColor: "border-indigo-500/30"
+        textColor: "text-[#68cd58]",
+        bgColor: "bg-[#0f1011]",
+        borderColor: "border-[#1a1c1d]"
       };
     }
     return null;
   };
 
+  const handleLinkedInClick = () => {
+    window.open('https://www.linkedin.com/in/preston-schlagheck/', '_blank');
+  };
+
   return (
-    <section id="experience" className="py-6 lg:py-4">
+    <section id="experience" className="py-12 lg:py-8">
       <div className="section-container">
         
         {/* Using CSS Grid with explicit gaps for guaranteed spacing */}
@@ -158,7 +161,7 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white">
               Experience
             </h2>
           </motion.div>
@@ -167,15 +170,8 @@ const ExperienceSection = () => {
           <div style={{ height: '12px' }}></div>
 
           {/* Content */}
-          <div 
-            className="w-full"
-            style={{
-              display: 'grid',
-              gridTemplateRows: experiences.map(() => 'auto 12px').slice(0, -1).join(' ') + ' auto',
-              gap: '8px'
-            }}
-          >
-            {experiences.map((exp, index) => [
+          <div className="grid gap-6 md:grid-cols-2 w-full">
+            {experiences.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -183,137 +179,64 @@ const ExperienceSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="glass rounded-2xl"
-                style={{ padding: '10px' }}
+                className="glass rounded-2xl relative cursor-pointer"
+                style={{ padding: '20px' }}
+                onClick={handleLinkedInClick}
               >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
-                  <div className="flex-1">
-                    <div className="mb-4" style={{ marginLeft: '6px', marginBottom: '7px' }}>
-                      {exp.title === "Coca-Cola Campus Ambassador" ? (
-                        <>
-                          {/* Mobile layout with forced line break */}
-                          <div className="block md:hidden">
-                            <div className="text-lg font-bold text-white" style={{ marginLeft: '-6px' }}>
-                              Coca-Cola Campus
-                            </div>
-                            <div className="flex items-center gap-4">
-                              <span className="text-lg font-bold text-white" style={{ marginLeft: '-6px' }}>Ambassador</span>
-                              {(() => {
-                                const tagConfig = getTagConfig(exp);
-                                return tagConfig && (
-                                  <motion.span
-                                    className={`relative px-1 py-2.5 text-xs font-medium ${tagConfig.textColor} rounded-full whitespace-nowrap`}
-                                    style={{ 
-                                      marginTop: '0px'
-                                    }}
-                                  >
-                                    <motion.div
-                                      className={`absolute inset-0 rounded-full border border-blue-900/60`}
-                                      style={{ 
-                                        background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
-                                        left: '-8px', 
-                                        right: '-8px',
-                                        top: '-2px',
-                                        bottom: '-2px'
-                                      }}
-                                    />
-                                    <span className="relative z-20 px-4">{tagConfig.text}</span>
-                                  </motion.span>
-                                );
-                              })()}
-                            </div>
-                          </div>
-                          {/* Desktop layout */}
-                          <div className="hidden md:flex items-center gap-4 mb-0">
-                            <h3 className="text-lg font-bold text-white" style={{ marginLeft: '-6px' }}>{exp.title}</h3>
-                            {(() => {
-                              const tagConfig = getTagConfig(exp);
-                              return tagConfig && (
-                                <motion.span
-                                  className={`relative px-1 py-2.5 text-xs font-medium ${tagConfig.textColor} rounded-full whitespace-nowrap`}
-                                  style={{ 
-                                    marginTop: '0px'
-                                  }}
-                                >
-                                  <motion.div
-                                    className={`absolute inset-0 rounded-full border border-blue-900/60`}
-                                    style={{ 
-                                      background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
-                                      left: '-8px', 
-                                      right: '-8px',
-                                      top: '-2px',
-                                      bottom: '-2px'
-                                    }}
-                                  />
-                                  <span className="relative z-20 px-4">{tagConfig.text}</span>
-                                </motion.span>
-                              );
-                            })()}
-                          </div>
-                        </>
-                      ) : (
-                        <div className="flex items-center gap-4 mb-0">
-                          <h3 className="text-lg font-bold text-white" style={{ marginLeft: '-6px' }}>{exp.title}</h3>
-                          {(() => {
-                            const tagConfig = getTagConfig(exp);
-                            return tagConfig && (
-                              <motion.span
-                                className={`relative px-1 py-2.5 text-xs font-medium ${tagConfig.textColor} rounded-full whitespace-nowrap`}
-                                style={{ 
-                                  marginTop: '0px'
-                                }}
-                              >
-                                <motion.div
-                                  className={`absolute inset-0 rounded-full border border-blue-900/60`}
-                                  style={{ 
-                                    background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
-                                    left: '-8px', 
-                                    right: '-8px',
-                                    top: '-2px',
-                                    bottom: '-2px'
-                                  }}
-                                />
-                                <span className="relative z-20 px-4">{tagConfig.text}</span>
-                              </motion.span>
-                            );
-                          })()}
-                        </div>
-                      )}
+                {/* Experience Title */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h3 className="text-2xl font-bold text-white" style={{ marginBottom: '9px' }}>{exp.title}</h3>
+                </div>
+
+                {/* Company Name Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>{exp.company}</h4>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                      <MapPin size={14} className="text-[#68cd58]" />
+                      <span className="text-sm text-[#82868e]">{exp.location}</span>
                     </div>
-                    <p className="font-medium" style={{ marginBottom: '4px', marginTop: '-7px', color: 'rgb(96, 165, 250)' }}>{exp.company}</p>
-                    
-                    <div className="flex flex-wrap gap-6 text-xs text-slate-400 mb-5" style={{ marginTop: '8px' }}>
-                      <div className="flex items-center gap-2">
-                        <Calendar size={14} />
-                        <span>{exp.period}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin size={14} />
-                        <span>{exp.location}</span>
-                      </div>
+                    <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                      <Calendar size={14} className="text-[#68cd58]" />
+                      <span className="text-sm text-[#82868e]">{exp.period}</span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-sm leading-relaxed mb-8" style={{ marginTop: '3px' }}>
-                  {exp.description}
-                </p>
-
-                {exp.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-lg border border-blue-500/20"
-                      >
-                        {tech}
-                      </span>
+                {/* Objectives Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Objectives</h4>
+                  <div className="space-y-4">
+                    {exp.description.split('. ').slice(0, 3).map((point, pointIndex) => (
+                      <div key={pointIndex} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-[#68cd58] rounded-full flex-shrink-0" style={{ marginTop: '8px' }}></div>
+                        <p className="text-sm text-[#82868e] leading-relaxed">
+                          {point.endsWith('.') ? point : point + '.'}
+                        </p>
+                      </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Resources Section */}
+                {exp.technologies.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Resources</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <div
+                          key={techIndex}
+                          className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md"
+                          style={{ padding: '4px 8px' }}
+                        >
+                          <span className="text-sm text-[#82868e]">{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              </motion.div>,
-              ...(index < experiences.length - 1 ? [<div key={`spacer-${index}`} style={{ height: '12px' }}></div>] : [])
-            ]).flat()}
+              </motion.div>
+            ))}
           </div>
 
         </div>

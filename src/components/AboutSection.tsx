@@ -40,7 +40,7 @@ const AboutSection = () => {
         >
           
           {/* Mobile Top Spacer - Even more increased */}
-          {!isDesktop && <div style={{ height: '100px' }}></div>}
+          {!isDesktop && <div style={{ height: '150px' }}></div>}
           
           {/* Profile Image */}
           <motion.div
@@ -51,12 +51,9 @@ const AboutSection = () => {
             className="text-center"
           >
             <div 
-              className="w-32 h-32 md:w-36 md:h-36 rounded-full shadow-2xl mx-auto flex items-center justify-center"
-              style={{ 
-                background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.9) 0%, rgba(75, 85, 99, 0.7) 35%, rgba(30, 58, 138, 0.8) 70%, rgba(55, 65, 81, 0.6) 100%)'
-              }}
+              className="w-[141px] h-[141px] md:w-[158px] md:h-[158px] rounded-full shadow-2xl mx-auto flex items-center justify-center bg-[#0f1011] border-2 border-[#1a1c1d]"
             >
-              <div className="w-[122px] h-[122px] md:w-[138px] md:h-[138px] rounded-full overflow-hidden">
+              <div className="w-[132px] h-[132px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden">
                 <Image
                   src="/profile-new.png"
                   alt="Preston Schlagheck"
@@ -81,8 +78,8 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h1 className="text-[1.48rem] md:text-4xl lg:text-5xl font-bold text-blue-50">
-              Hello, I&apos;m Preston Schlagheck
+            <h1 className="text-4xl lg:text-5xl text-center text-white">
+              {isDesktop ? "Hello, I'm Preston Schlagheck" : "I'm Preston Schlagheck"}
             </h1>
           </motion.div>
 
@@ -95,7 +92,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-center w-full"
+            className="text-center w-full font-sans"
             style={{
               display: 'grid',
               gridTemplateColumns: isDesktop ? '1fr minmax(0, 850px) 1fr' : '24px 1fr 24px',
@@ -103,16 +100,29 @@ const AboutSection = () => {
             }}
           >
             <div></div>
-                         <p 
-               className="text-slate-300 leading-relaxed mx-auto"
-               style={{
-                 fontSize: isDesktop ? '1rem' : '0.744rem',
-                 padding: '0',
-                 width: '100%'
-               }}
-             >
-              I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I have extensive experience in web development for companies, helping them achieve their financial and digital presence objectives. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
-            </p>
+            {isDesktop ? (
+              <p 
+                className="text-[#82868e] leading-relaxed mx-auto font-sans"
+                style={{
+                  fontSize: isDesktop ? '1rem' : '0.744rem',
+                  padding: '0',
+                  width: '100%'
+                }}
+              >
+                I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I have extensive experience in web development for companies, helping them achieve their financial and digital presence objectives. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
+              </p>
+            ) : (
+              <p 
+                className="text-[#82868e] leading-relaxed mx-auto font-sans"
+                style={{
+                  fontSize: '1rem',
+                  padding: '0',
+                  width: '100%'
+                }}
+              >
+                I am a Finance major and Computer Science minor at USC with extensive web development experience. I help companies achieve their financial and digital presence objectives through custom web solutions. I am passionate about investments and leveraging AI, programming, and finance to create innovative FinTech solutions.
+              </p>
+            )}
             <div></div>
           </motion.div>
 
@@ -121,42 +131,28 @@ const AboutSection = () => {
 
           {/* Contact Info */}
           <motion.div 
-            className="flex flex-wrap justify-center gap-3 md:gap-6 text-center"
+            className="flex flex-wrap justify-center gap-3 md:gap-6 text-center font-sans"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.25 }}
             viewport={{ once: true }}
-            style={{
-              fontSize: isDesktop ? '0.875rem' : '0.788rem'
-            }}
           >
-            <a 
-              href="mailto:prestonschlagheck@gmail.com"
-              className="flex items-center gap-2 text-slate-400 hover:text-slate-300 transition-colors"
-            >
-              <Mail size={isDesktop ? 16 : 12.6} />
-              <span>prestonschlagheck@gmail.com</span>
-            </a>
-            <a 
-              href="tel:+19593330277"
-              className="flex items-center gap-2 text-slate-400 hover:text-slate-300 transition-colors"
-            >
-              <Phone size={isDesktop ? 16 : 12.6} />
-              <span>(959) 333-0277</span>
-            </a>
-            <div className="flex items-center gap-2 text-slate-400">
-              <MapPin size={isDesktop ? 16 : 12.6} />
-              <span>Guilford, CT & Columbia, SC</span>
+            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+              <Mail size={16} className="text-[#68cd58]" />
+              <span className="text-sm text-[#82868e]">prestonschlagheck@gmail.com</span>
             </div>
-            <a 
-              href="/resume.pdf" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-400 hover:text-blue-300 transition-colors"
-            >
-              <FileText size={isDesktop ? 16 : 12.6} />
-              <span>Download Resume</span>
-            </a>
+            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+              <Phone size={16} className="text-[#68cd58]" />
+              <span className="text-sm text-[#82868e]">(959) 333-0277</span>
+            </div>
+            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+              <MapPin size={16} className="text-[#68cd58]" />
+              <span className="text-sm text-[#82868e]">Guilford, CT & Columbia, SC</span>
+            </div>
+            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+              <FileText size={16} className="text-[#68cd58]" />
+              <span className="text-sm text-[#82868e]">Download Resume</span>
+            </div>
           </motion.div>
 
           {/* Mobile Bottom Spacer - Increased to prevent Experience section showing */}

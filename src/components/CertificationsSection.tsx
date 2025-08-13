@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
+import { Calendar, User } from 'lucide-react';
 
 const certifications = [
   {
@@ -15,7 +15,7 @@ const certifications = [
     title: "TIPS On-Premise Serving Certification",
     issuer: "360training",
     date: "Jun 2025",
-    description: "Comprehensive training in responsible alcohol service for on-premise establishments, covering legal requirements, identification checking, and intervention techniques for safe alcohol service.",
+    description: "Comprehensive training in responsible alcohol service for on-premise establishments, covering legal requirements, identification checking, and intervention techniques for safe alcohol service",
     technologies: ["Compliance", "Customer Safety", "Intervention Techniques"]
   }
 ];
@@ -40,17 +40,15 @@ const CertificationsSection = () => {
           <div style={{ height: '12px' }}></div>
 
           {/* Header */}
-          <motion.div
+          <motion.h2 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-4xl lg:text-5xl font-bold text-center mb-12 text-white"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-300">
-              Certifications
-            </h2>
-          </motion.div>
+            Certifications
+          </motion.h2>
 
           {/* Spacer */}
           <div style={{ height: '12px' }}></div>
@@ -65,42 +63,57 @@ const CertificationsSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="glass rounded-2xl"
-                style={{ padding: '10px' }}
+                className="glass rounded-2xl relative"
+                style={{ padding: '20px' }}
               >
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold text-white" style={{ marginBottom: '1px' }}>{cert.title}</h3>
-                  <p className="font-medium" style={{ marginBottom: '4px', color: 'rgb(96, 165, 250)' }}>{cert.issuer}</p>
-                  
-                  <div className="flex items-center gap-1 text-xs text-slate-400" style={{ marginBottom: '6px' }}>
-                    <Calendar size={14} />
-                    <span>Issued {cert.date}</span>
+                {/* Certification Title */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h3 className="text-2xl font-bold text-white" style={{ marginBottom: '9px' }}>{cert.title}</h3>
+                </div>
+
+                {/* Issuance Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Issuance</h4>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                      <User size={14} className="text-[#68cd58]" />
+                      <span className="text-sm text-[#82868e]">{cert.issuer}</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                      <Calendar size={14} className="text-[#68cd58]" />
+                      <span className="text-sm text-[#82868e]">{cert.date}</span>
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-slate-300 text-sm leading-relaxed mb-4" style={{ marginBottom: '14px' }}>
-                  {cert.description}
-                </p>
+                {/* Objectives Section */}
+                <div style={{ marginBottom: '9px' }}>
+                  <h4 className="text-base font-semibold text-white" style={{ marginBottom: '9px' }}>Objectives</h4>
+                  <div className="space-y-4">
+                    {cert.description.split('. ').slice(0, 3).map((point, pointIndex) => (
+                      <div key={pointIndex} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-[#68cd58] rounded-full flex-shrink-0" style={{ marginTop: '8px' }}></div>
+                        <p className="text-sm text-[#82868e] leading-relaxed">
+                          {point.endsWith('.') ? point : point + '.'}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                <div className="flex flex-wrap gap-6" style={{ marginLeft: '6px', marginTop: '3px', gap: '12px 24px' }}>
-                  {cert.technologies.map((tech, techIndex) => (
-                    <motion.span
-                      key={techIndex}
-                      className="relative px-1 py-2.5 text-xs font-medium text-yellow-300 rounded-full whitespace-nowrap"
-                    >
-                      <motion.div
-                        className="absolute inset-0 rounded-lg border border-blue-900/60"
-                        style={{ 
-                          background: 'radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.7) 0%, rgba(75, 85, 99, 0.5) 35%, rgba(30, 58, 138, 0.6) 70%, rgba(55, 65, 81, 0.4) 100%)',
-                          left: '-8px', 
-                          right: '-8px',
-                          top: '-2px',
-                          bottom: '-2px'
-                        }}
-                      />
-                      <span className="relative z-20 px-4">{tech}</span>
-                    </motion.span>
-                  ))}
+                {/* Resources Section */}
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-2" style={{ marginLeft: '17px' }}>
+                    {cert.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md"
+                        style={{ padding: '4px 8px' }}
+                      >
+                        <span className="text-sm text-[#82868e]">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

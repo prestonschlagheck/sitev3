@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0f19;
-  --foreground: #e2e8f0;
-  --glass-background: rgba(15, 23, 42, 0.95);
-  --glass-border: rgba(30, 58, 138, 0.4);
+  --background: #07090a;
+  --foreground: #f6f8f8;
+  --glass-background: rgba(15, 16, 17, 0.95);
+  --glass-border: rgba(26, 28, 29, 0.4);
   --glass-shadow: rgba(0, 0, 0, 0.6);
-  --accent-blue: #3b82f6;
-  --accent-blue-light: #60a5fa;
-  --text-secondary: #94a3b8;
-  --card-background: rgba(15, 23, 42, 0.8);
+  --accent-blue: #68cd58;
+  --accent-blue-light: #68cd58;
+  --text-secondary: #82868e;
+  --card-background: rgba(15, 16, 17, 0.8);
   --section-spacing: 4rem;
   --container-padding: 1.5rem;
 }
@@ -17,8 +17,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 * {
@@ -29,19 +29,45 @@
 
 html {
   scroll-behavior: smooth;
-  background: linear-gradient(180deg, #0b0f19 0%, #0d1326 60%, #0b0f19 100%);
+  background: #07090a;
   background-attachment: fixed;
   min-height: 100vh;
 }
 
 body {
-  background: linear-gradient(180deg, #0b0f19 0%, #0d1326 60%, #0b0f19 100%);
+  background: #07090a;
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #f6f8f8;
+}
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 /* Section spacing utilities */
@@ -66,15 +92,15 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 8px 32px var(--glass-shadow);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .glass-nav {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 16, 17, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(26, 28, 29, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Scrollbar styling */
@@ -83,17 +109,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(15, 16, 17, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.6);
+  background: rgba(104, 205, 88, 0.6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.8);
+  background: rgba(104, 205, 88, 0.8);
 }
 
 /* Custom animations */
