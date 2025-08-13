@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className={`${isDesktop ? 'min-h-screen flex items-center justify-center' : 'py-20 pt-32'}`}>
+    <section id="about" className={`${isDesktop ? 'min-h-screen flex items-center justify-center' : 'py-20'}`} style={!isDesktop ? { paddingTop: '50px' } : {}}>
       <div className="w-full max-w-6xl mx-auto px-6">
         
         {/* Using CSS Grid with explicit gaps for guaranteed spacing */}
@@ -122,7 +122,7 @@ const AboutSection = () => {
               <p 
                 className="text-[#82868e] leading-relaxed mx-auto font-sans"
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '0.875rem',
                   padding: '0',
                   width: '100%'
                 }}
