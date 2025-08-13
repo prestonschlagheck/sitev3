@@ -150,7 +150,7 @@ const AboutSection = () => {
             </div>
             <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
               <Phone size={16} className="text-[#68cd58]" />
-              <span className="text-sm text-[#82868e]">(959) 333-0277</span>
+              <span className="text-sm text-[#82868e]">959-333-0277</span>
             </div>
             <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
               <MapPin size={16} className="text-[#68cd58]" />
