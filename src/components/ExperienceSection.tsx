@@ -215,9 +215,9 @@ const ExperienceSection = () => {
                 <button
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
                   className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md hover:border-[#68cd58] transition-colors"
-                  style={{ padding: '8px 16px' }}
+                  style={{ padding: '6px 12px' }}
                 >
-                  <span className="text-sm text-[#82868e] font-sans">Filter</span>
+                  <span className="text-xs text-[#82868e] font-sans">Filter</span>
                   <Plus size={14} className={`transition-transform text-[#68cd58] ${isFilterOpen ? 'rotate-45' : ''}`} />
                 </button>
                 
@@ -226,7 +226,7 @@ const ExperienceSection = () => {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -10 }}
-                    className="flex items-center gap-3"
+                    className="flex items-center gap-2"
                   >
                     <button
                       onClick={() => toggleCategory('web-development')}
@@ -235,10 +235,10 @@ const ExperienceSection = () => {
                           ? 'bg-[#0f1011] border-[#68cd58]'
                           : 'bg-transparent border-[#1a1c1d] hover:border-[#68cd58]'
                       }`}
-                      style={{ padding: '8px 16px' }}
+                      style={{ padding: '6px 12px' }}
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                      <span className={`text-sm font-medium font-sans ${
+                      <span className={`text-xs font-medium font-sans whitespace-nowrap ${
                         selectedCategories.includes('web-development') ? 'text-[#68cd58]' : 'text-[#82868e]'
                       }`}>
                         Web Development
@@ -255,7 +255,7 @@ const ExperienceSection = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="flex items-center gap-3 md:hidden"
+                    className="flex items-center gap-2 md:hidden flex-wrap"
                     style={{ marginLeft: '-14px', marginTop: '-10px' }}
                   >
                     {categories.filter(cat => cat.id !== 'web-development').map(category => {
@@ -276,10 +276,10 @@ const ExperienceSection = () => {
                               ? 'bg-[#0f1011] border-[#68cd58]'
                               : 'bg-transparent border-[#1a1c1d] hover:border-[#68cd58]'
                           }`}
-                          style={{ padding: '8px 16px' }}
+                          style={{ padding: '6px 12px' }}
                         >
                           <div className={`w-1.5 h-1.5 rounded-full ${getCategoryColor(category.id)}`}></div>
-                          <span className={`text-sm font-medium font-sans ${
+                          <span className={`text-xs font-medium font-sans whitespace-nowrap ${
                             selectedCategories.includes(category.id) ? 'text-[#68cd58]' : 'text-[#82868e]'
                           }`}>
                             {category.label}
@@ -318,7 +318,7 @@ const ExperienceSection = () => {
                           style={{ padding: '8px 16px' }}
                         >
                           <div className={`w-1.5 h-1.5 rounded-full ${getCategoryColor(category.id)}`}></div>
-                          <span className={`text-sm font-medium font-sans ${
+                          <span className={`text-xs font-medium font-sans ${
                             selectedCategories.includes(category.id) ? 'text-[#68cd58]' : 'text-[#82868e]'
                           }`}>
                             {category.label}
