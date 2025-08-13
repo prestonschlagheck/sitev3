@@ -133,7 +133,14 @@ const ExperienceSection = () => {
   };
 
   const filteredExperiences = selectedCategories.length > 0 
-    ? experiences.filter(exp => selectedCategories.includes(exp.category))
+    ? experiences.filter(exp => {
+        // Special handling for internships - check both category and type
+        if (selectedCategories.includes('internships')) {
+          return exp.type === 'internship';
+        }
+        // For other categories, use the existing logic
+        return selectedCategories.includes(exp.category);
+      })
     : experiences;
 
   const getTagConfig = (exp: Experience): TagConfig | null => {
