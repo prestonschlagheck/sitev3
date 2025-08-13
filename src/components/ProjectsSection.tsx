@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Play, User, Code, Target } from 'lucide-react';
+import { ExternalLink, Play, Code } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [

@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, Instagram, Download } from 'lucide-react';
 
 const InterestsSection = () => {
   return (

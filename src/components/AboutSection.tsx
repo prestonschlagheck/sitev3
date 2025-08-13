@@ -76,11 +76,18 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.15 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center w-full"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: isDesktop ? '1fr minmax(0, 850px) 1fr' : '24px 1fr 24px',
+              justifyItems: 'center'
+            }}
           >
-            <h1 className="text-4xl lg:text-5xl text-center text-white">
-              {isDesktop ? "Hello, I'm Preston Schlagheck" : "I'm Preston Schlagheck"}
+            <div></div>
+            <h1 className={`text-center text-white ${isDesktop ? 'text-4xl lg:text-5xl' : 'text-3xl'}`}>
+              {isDesktop ? "Hello, I'm Preston Schlagheck" : "Hi, I'm Preston Schlagheck"}
             </h1>
+            <div></div>
           </motion.div>
 
           {/* Spacer 2 - Mobile only - Decreased */}
@@ -109,7 +116,7 @@ const AboutSection = () => {
                   width: '100%'
                 }}
               >
-                I am a Finance major and Computer Science minor at the University of South Carolina, with leadership experience in both Sigma Phi Epsilon and Alpha Kappa Psi. My background includes several internships and work in the service industry, which have strengthened my adaptability and problem-solving abilities. I have extensive experience in web development for companies, helping them achieve their financial and digital presence objectives. I&apos;m particularly passionate about investments and am focused on leveraging my combined interests in finance, artificial intelligence, and programming to develop innovative solutions in the FinTech space.
+                I am a finance and computer science student at the University of South Carolina who helps companies grow their digital presence and revenue through AI-driven tools, custom web solutions, and data-backed strategies. My background includes multiple internships and experience in the service industry, which have strengthened my adaptability and problem-solving skills. I&apos;m passionate about investments and focused on leveraging my expertise in finance, artificial intelligence, and programming to create innovative solutions in financial technology.
               </p>
             ) : (
               <p 
@@ -120,7 +127,7 @@ const AboutSection = () => {
                   width: '100%'
                 }}
               >
-                I am a Finance major and Computer Science minor at USC with extensive web development experience. I help companies achieve their financial and digital presence objectives through custom web solutions. I am passionate about investments and leveraging AI, programming, and finance to create innovative FinTech solutions.
+                I&apos;m a finance and computer science student at USC who helps companies grow their digital presence and revenue through AI-driven tools and data-backed strategies. Passionate about investments, I combine finance, AI, and programming to build innovative financial technology solutions.
               </p>
             )}
             <div></div>

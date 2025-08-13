@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Building2, User } from 'lucide-react';
+import { Calendar, MapPin, User, Plus } from 'lucide-react';
+import { useState } from 'react';
 
 interface Experience {
   title: string;
@@ -12,6 +13,7 @@ interface Experience {
   technologies: string[];
   current: boolean;
   type?: 'previous' | 'internship';
+  category: 'web-development' | 'internships' | 'service' | 'leadership';
 }
 
 interface TagConfig {
@@ -29,7 +31,8 @@ const experiences: Experience[] = [
     period: "Jul 2025 - Present",
     description: "Maintain booking-integrated websites and streamline backend workflows to reduce manual reporting.",
     technologies: [],
-    current: true
+    current: true,
+    category: 'web-development'
   },
   {
     title: "Bar Back",
@@ -38,7 +41,8 @@ const experiences: Experience[] = [
     period: "Jun 2025 - Present",
     description: "Assisting bartenders, servers, and wait staff to ensure efficiency internally.",
     technologies: [],
-    current: true
+    current: true,
+    category: 'service'
   },
   {
     title: "Member Services Associate",
@@ -47,7 +51,8 @@ const experiences: Experience[] = [
     period: "May 2025 - Present",
     description: "Managed daily transactions, scheduled tee times, and served as primary contact for 500+ club members.",
     technologies: [],
-    current: true
+    current: true,
+    category: 'service'
   },
   {
     title: "Outside Operations Assistant",
@@ -57,7 +62,8 @@ const experiences: Experience[] = [
     description: "Planned and coordinated 14 major tournaments and social events annually while overseeing 100 daily tee times and maintaining a fleet of 50 golf carts.",
     technologies: [],
     current: false,
-    type: "previous"
+    type: "previous",
+    category: 'service'
   },
   {
     title: "Web Developer",
@@ -67,7 +73,8 @@ const experiences: Experience[] = [
     description: "Developed 30 web pages and managed email campaigns reaching 750+ subscribers while securing 40+ sponsors.",
     technologies: [],
     current: false,
-    type: "internship"
+    type: "internship",
+    category: 'web-development'
   },
   {
     title: "Summer Research Intern",
@@ -77,7 +84,8 @@ const experiences: Experience[] = [
     description: "Designed organization website and conducted analysis of 10 academic studies with visual enhancement.",
     technologies: [],
     current: false,
-    type: "internship"
+    type: "internship",
+    category: 'internships'
   },
   {
     title: "Alpha Fund Chair",
@@ -86,7 +94,8 @@ const experiences: Experience[] = [
     period: "Jun 2025 - Present",
     description: "Leading fundraising initiatives and managing financial resources for fraternity chapter operations.",
     technologies: [],
-    current: true
+    current: true,
+    category: 'leadership'
   },
   {
     title: "Graphic & Apparel Design Chair",
@@ -95,25 +104,45 @@ const experiences: Experience[] = [
     period: "Nov 2024 - Present",
     description: "Managing graphic design projects and apparel development while serving in multiple leadership roles.",
     technologies: [],
-    current: true
+    current: true,
+    category: 'leadership'
   }
 ];
 
 const ExperienceSection = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const categories = [
+    { id: 'web-development', label: 'Web Development' },
+    { id: 'internships', label: 'Internships' },
+    { id: 'service', label: 'Service' },
+    { id: 'leadership', label: 'Leadership' }
+  ];
+
+  const toggleCategory = (categoryId: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(categoryId) 
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedCategories([]);
+  };
+
+  const filteredExperiences = selectedCategories.length > 0 
+    ? experiences.filter(exp => selectedCategories.includes(exp.category))
+    : experiences;
+
   const getTagConfig = (exp: Experience): TagConfig | null => {
-    // Remove tags for specific positions
-    if (exp.title === "Member Services Associate" || exp.title === "Outside Operations Assistant" || exp.title === "Bar Back") {
+    // Remove tags for specific positions and all current positions
+    if (exp.title === "Member Services Associate" || exp.title === "Outside Operations Assistant" || exp.title === "Bar Back" || exp.current) {
       return null;
     }
     
-    if (exp.current) {
-      return {
-        text: "Current",
-        textColor: "text-[#68cd58]",
-        bgColor: "bg-[#0f1011]",
-        borderColor: "border-[#1a1c1d]"
-      };
-    } else if (exp.type === "previous") {
+    if (exp.type === "previous") {
       return {
         text: "Previous",
         textColor: "text-[#68cd58]",
@@ -143,7 +172,7 @@ const ExperienceSection = () => {
         <div 
           style={{
             display: 'grid',
-            gridTemplateRows: '12px auto 12px auto',
+            gridTemplateRows: '12px auto 12px auto 12px auto',
             gap: '8px',
             justifyItems: 'center',
             alignItems: 'center'
@@ -169,9 +198,147 @@ const ExperienceSection = () => {
           {/* Spacer */}
           <div style={{ height: '12px' }}></div>
 
+          {/* Filter Bar */}
+          <div className="w-full">
+            <div className="flex flex-col md:flex-row gap-6 bg-[#0f1011] rounded-2xl" style={{ margin: '0', padding: '16px 32px', minHeight: '40px', position: 'relative' }}>
+              <div className="flex items-center gap-3" style={{ marginLeft: '-14px' }}>
+                <button
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md hover:border-[#68cd58] transition-colors"
+                  style={{ padding: '8px 16px' }}
+                >
+                  <span className="text-sm text-[#82868e] font-sans">Filter</span>
+                  <Plus size={14} className={`transition-transform text-[#68cd58] ${isFilterOpen ? 'rotate-45' : ''}`} />
+                </button>
+                
+                {isFilterOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    className="flex items-center gap-3"
+                  >
+                    <button
+                      onClick={() => toggleCategory('web-development')}
+                      className={`flex items-center gap-2 rounded-md border transition-all ${
+                        selectedCategories.includes('web-development')
+                          ? 'bg-[#0f1011] border-[#68cd58]'
+                          : 'bg-transparent border-[#1a1c1d] hover:border-[#68cd58]'
+                      }`}
+                      style={{ padding: '8px 16px' }}
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      <span className={`text-sm font-medium font-sans ${
+                        selectedCategories.includes('web-development') ? 'text-[#68cd58]' : 'text-[#82868e]'
+                      }`}>
+                        Web Development
+                      </span>
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+              
+              {isFilterOpen && (
+                <>
+                  {/* Mobile version with negative margin */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-center gap-3 md:hidden"
+                    style={{ marginLeft: '-14px', marginTop: '-10px' }}
+                  >
+                    {categories.filter(cat => cat.id !== 'web-development').map(category => {
+                      const getCategoryColor = (id: string) => {
+                        switch (id) {
+                          case 'internships': return 'bg-yellow-500';
+                          case 'service': return 'bg-purple-500';
+                          case 'leadership': return 'bg-orange-500';
+                          default: return 'bg-[#68cd58]';
+                        }
+                      };
+                      return (
+                        <button
+                          key={category.id}
+                          onClick={() => toggleCategory(category.id)}
+                          className={`flex items-center gap-2 rounded-md border transition-all ${
+                            selectedCategories.includes(category.id)
+                              ? 'bg-[#0f1011] border-[#68cd58]'
+                              : 'bg-transparent border-[#1a1c1d] hover:border-[#68cd58]'
+                          }`}
+                          style={{ padding: '8px 16px' }}
+                        >
+                          <div className={`w-1.5 h-1.5 rounded-full ${getCategoryColor(category.id)}`}></div>
+                          <span className={`text-sm font-medium font-sans ${
+                            selectedCategories.includes(category.id) ? 'text-[#68cd58]' : 'text-[#82868e]'
+                          }`}>
+                            {category.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                  
+                  {/* Desktop version without negative margin */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="hidden md:flex items-center gap-3"
+                    style={{ marginLeft: '-14px' }}
+                  >
+                    {categories.filter(cat => cat.id !== 'web-development').map(category => {
+                      const getCategoryColor = (id: string) => {
+                        switch (id) {
+                          case 'internships': return 'bg-yellow-500';
+                          case 'service': return 'bg-purple-500';
+                          case 'leadership': return 'bg-orange-500';
+                          default: return 'bg-[#68cd58]';
+                        }
+                      };
+                      return (
+                        <button
+                          key={category.id}
+                          onClick={() => toggleCategory(category.id)}
+                          className={`flex items-center gap-2 rounded-md border transition-all ${
+                            selectedCategories.includes(category.id)
+                              ? 'bg-[#0f1011] border-[#68cd58]'
+                              : 'bg-transparent border-[#1a1c1d] hover:border-[#68cd58]'
+                          }`}
+                          style={{ padding: '8px 16px' }}
+                        >
+                          <div className={`w-1.5 h-1.5 rounded-full ${getCategoryColor(category.id)}`}></div>
+                          <span className={`text-sm font-medium font-sans ${
+                            selectedCategories.includes(category.id) ? 'text-[#68cd58]' : 'text-[#82868e]'
+                          }`}>
+                            {category.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </motion.div>
+                </>
+              )}
+              
+              <div className="flex items-center gap-3 ml-auto absolute right-6 top-4 md:top-1/2 md:-translate-y-1/2">
+                {selectedCategories.length > 0 && (
+                  <button
+                    onClick={clearFilters}
+                    className="text-sm text-[#82868e] hover:text-white transition-colors font-sans"
+                  >
+                    Clear all
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Spacer */}
+          <div style={{ height: '12px' }}></div>
+
           {/* Content */}
           <div className="grid gap-6 md:grid-cols-2 w-full">
-            {experiences.map((exp, index) => (
+            {filteredExperiences.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -200,6 +367,15 @@ const ExperienceSection = () => {
                       <Calendar size={14} className="text-[#68cd58]" />
                       <span className="text-sm text-[#82868e]">{exp.period}</span>
                     </div>
+                    {(() => {
+                      const tagConfig = getTagConfig(exp);
+                      return tagConfig && (
+                        <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
+                          <User size={14} className="text-[#68cd58]" />
+                          <span className="text-sm text-[#82868e]">{tagConfig.text}</span>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
 
