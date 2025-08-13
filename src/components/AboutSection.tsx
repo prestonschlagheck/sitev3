@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className={`${isDesktop ? 'min-h-screen flex items-center justify-center' : 'py-20 pt-64'}`}>
+    <section id="about" className={`${isDesktop ? 'min-h-screen flex items-center justify-center' : 'py-20 pt-32'}`}>
       <div className="w-full max-w-6xl mx-auto px-6">
         
         {/* Using CSS Grid with explicit gaps for guaranteed spacing */}
@@ -39,8 +39,8 @@ const AboutSection = () => {
           }}
         >
           
-          {/* Mobile Top Spacer - Even more increased */}
-          {!isDesktop && <div style={{ height: '150px' }}></div>}
+          {/* Mobile Top Spacer - Reduced from 150px to 80px */}
+          {!isDesktop && <div style={{ height: '80px' }}></div>}
           
           {/* Profile Image */}
           <motion.div
@@ -84,7 +84,7 @@ const AboutSection = () => {
             }}
           >
             <div></div>
-            <h1 className={`text-center text-white ${isDesktop ? 'text-4xl lg:text-5xl' : 'text-3xl'}`}>
+            <h1 className={`text-center text-white ${isDesktop ? 'text-4xl lg:text-5xl' : 'text-2xl'}`}>
               {isDesktop ? "Hello, I'm Preston Schlagheck" : "Hi, I'm Preston Schlagheck"}
             </h1>
             <div></div>
@@ -144,21 +144,21 @@ const AboutSection = () => {
             transition={{ duration: 0.3, delay: 0.25 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
-              <Mail size={16} className="text-[#68cd58]" />
-              <span className="text-sm text-[#82868e]">prestonschlagheck@gmail.com</span>
+            <div className={`flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md ${!isDesktop ? 'px-2 py-1' : ''}`} style={{ padding: isDesktop ? '4px 8px' : '2px 4px' }}>
+              <Mail size={isDesktop ? 16 : 14} className="text-[#68cd58]" />
+              <span className={`${isDesktop ? 'text-sm' : 'text-xs'} text-[#82868e]`}>prestonschlagheck@gmail.com</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
-              <Phone size={16} className="text-[#68cd58]" />
-              <span className="text-sm text-[#82868e]">959-333-0277</span>
+            <div className={`flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md ${!isDesktop ? 'px-2 py-1' : ''}`} style={{ padding: isDesktop ? '4px 8px' : '2px 4px' }}>
+              <Phone size={isDesktop ? 16 : 14} className="text-[#68cd58]" />
+              <span className={`${isDesktop ? 'text-sm' : 'text-xs'} text-[#82868e]`}>959-333-0277</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
-              <MapPin size={16} className="text-[#68cd58]" />
-              <span className="text-sm text-[#82868e]">Guilford, CT & Columbia, SC</span>
+            <div className={`flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md ${!isDesktop ? 'px-2 py-1' : ''}`} style={{ padding: isDesktop ? '4px 8px' : '2px 4px' }}>
+              <MapPin size={isDesktop ? 16 : 14} className="text-[#68cd58]" />
+              <span className={`${isDesktop ? 'text-sm' : 'text-xs'} text-[#82868e]`}>Guilford, CT & Columbia, SC</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
-              <Download size={16} className="text-[#68cd58]" />
-              <span className="text-sm text-[#82868e]">Download Resume</span>
+            <div className={`flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md ${!isDesktop ? 'px-2 py-1' : ''}`} style={{ padding: isDesktop ? '4px 8px' : '2px 4px' }}>
+              <Download size={isDesktop ? 16 : 14} className="text-[#68cd58]" />
+              <span className={`${isDesktop ? 'text-sm' : 'text-xs'} text-[#82868e]`}>Download Resume</span>
             </div>
           </motion.div>
 

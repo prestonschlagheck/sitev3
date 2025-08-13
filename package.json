@@ -31,6 +31,7 @@
     "jimp": "^1.6.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^45.0.8"
   }
 }
