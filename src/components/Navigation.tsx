@@ -14,7 +14,7 @@ const Navigation = () => {
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'certifications', label: 'Certifications' },
-    { id: 'interests', label: 'Contact' },
+    { id: 'interests', label: 'Contact', hideOnMobile: true },
   ];
 
   useEffect(() => {
@@ -101,11 +101,11 @@ const Navigation = () => {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`relative px-1 py-1.5 md:py-2.5 text-[10px] md:text-sm font-medium transition-all duration-300 rounded-full whitespace-nowrap ${
+                className={`relative px-1 py-1.5 md:py-2.5 text-[11px] md:text-sm font-medium transition-all duration-300 rounded-full whitespace-nowrap ${
                   activeSection === section.id
                     ? 'text-white scale-105'
                     : 'text-slate-400 hover:text-white hover:scale-105'
-                }`}
+                } ${section.hideOnMobile ? 'hidden md:block' : ''}`}
               >
                 {activeSection === section.id && (
                   <motion.div
