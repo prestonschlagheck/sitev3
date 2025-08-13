@@ -134,12 +134,15 @@ const ExperienceSection = () => {
 
   const filteredExperiences = selectedCategories.length > 0 
     ? experiences.filter(exp => {
-        // Special handling for internships - check both category and type
-        if (selectedCategories.includes('internships')) {
-          return exp.type === 'internship';
-        }
-        // For other categories, use the existing logic
-        return selectedCategories.includes(exp.category);
+        // Check if this experience matches ANY of the selected categories
+        return selectedCategories.some(categoryId => {
+          // Special handling for internships - check type
+          if (categoryId === 'internships') {
+            return exp.type === 'internship';
+          }
+          // For other categories, check the category field
+          return exp.category === categoryId;
+        });
       })
     : experiences;
 
