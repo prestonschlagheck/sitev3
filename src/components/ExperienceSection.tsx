@@ -38,20 +38,20 @@ const experiences: Experience[] = [
     title: "Bar Back",
     company: "BAR New Haven",
     location: "New Haven, Connecticut",
-    period: "Jun 2025 - Present",
+    period: "Jun 2025 - Aug 2025",
     description: "Assisting bartenders, servers, and wait staff to ensure efficiency internally.",
     technologies: [],
-    current: true,
+    current: false,
     category: 'service'
   },
   {
     title: "Member Services Associate",
     company: "Madison Country Club",
     location: "Madison, Connecticut",
-    period: "May 2025 - Present",
+    period: "May 2025 - Jul 2025",
     description: "Managed daily transactions, scheduled tee times, and served as primary contact for 500+ club members.",
     technologies: [],
-    current: true,
+    current: false,
     category: 'service'
   },
   {
@@ -379,7 +379,8 @@ const ExperienceSection = () => {
                     </div>
                     {(() => {
                       const tagConfig = getTagConfig(exp);
-                      return tagConfig && (
+                      // Only show Previous tag, not Internship tag
+                      return tagConfig && tagConfig.text === 'Previous' && (
                         <div className="flex items-center gap-2 bg-[#0f1011] border border-[#1a1c1d] rounded-md" style={{ padding: '4px 8px' }}>
                           <User size={14} className="text-[#68cd58]" />
                           <span className="text-sm text-[#82868e]">{tagConfig.text}</span>

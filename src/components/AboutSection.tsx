@@ -61,6 +61,9 @@ const AboutSection = () => {
           {/* Spacer 1 - Mobile only */}
           {!isDesktop && <div style={{ height: '16px' }}></div>}
 
+          {/* Desktop Spacer Below Profile Picture */}
+          {isDesktop && <div style={{ height: '24px' }}></div>}
+
           {/* Main Heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,6 +79,9 @@ const AboutSection = () => {
 
           {/* Spacer 2 - Mobile only */}
           {!isDesktop && <div style={{ height: '12px' }}></div>}
+
+          {/* Desktop Spacer Above Paragraph */}
+          {isDesktop && <div style={{ height: '24px' }}></div>}
 
           {/* Description */}
           <motion.div
@@ -110,6 +116,9 @@ const AboutSection = () => {
               </p>
             )}
           </motion.div>
+
+          {/* Desktop Spacer Below Paragraph */}
+          {isDesktop && <div style={{ height: '24px' }}></div>}
 
           {/* Spacer 3 - Mobile only */}
           {!isDesktop && <div style={{ height: '12px' }}></div>}
